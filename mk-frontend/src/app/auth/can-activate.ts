@@ -10,7 +10,7 @@ class CanActivateTeam implements CanActivate {
 
   canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<boolean|UrlTree>|Promise<boolean|UrlTree>|boolean|UrlTree {
     const requiredRoles: Role[] = route.data['roles'];
-    const role = this.authService.loggedInUser?.role;
+    const role = this.authService.loggedInUser?.roleId;
     if(!requiredRoles){
         return true;
     }

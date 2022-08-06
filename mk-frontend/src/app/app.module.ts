@@ -16,9 +16,12 @@ import { UsersSummaryComponent } from './users/users-summary.component';
 import { LoginComponent } from './auth/login.component'
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatDialogModule } from '@angular/material/dialog'
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { ConfirmDialogComponent } from './common/dialog/confirm-dialog.component';
 import { MatCardModule } from '@angular/material/card'
+import { AuthInterceptor } from './common/middleware/auth-interceptor';
+import { CreateServerDialogComponent } from './servers/create-server-dialog.component';
+import { MatInputModule } from '@angular/material/input'
 
 @NgModule({
   declarations: [
@@ -28,7 +31,8 @@ import { MatCardModule } from '@angular/material/card'
     ServersSummaryComponent,
     UsersSummaryComponent,
     LoginComponent,
-    ConfirmDialogComponent
+    ConfirmDialogComponent,
+    CreateServerDialogComponent
   ],
   imports: [
     BrowserModule,
@@ -43,9 +47,12 @@ import { MatCardModule } from '@angular/material/card'
     ReactiveFormsModule,
     MatDialogModule,
     HttpClientModule,
-    MatCardModule
+    MatCardModule,
+    MatInputModule
   ],
-  providers: [],
+  providers: [
+    { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

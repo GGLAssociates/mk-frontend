@@ -1,10 +1,15 @@
 
-export interface Server {
-    id: number;
+export interface NewServer {
     name: string;
+}
+
+export interface Server extends NewServer {
+    id: number;
     ipAddress: string;
     status: ServerStatus;
 }
+
+
 
 export enum ServerStatus {
     Off = 1,

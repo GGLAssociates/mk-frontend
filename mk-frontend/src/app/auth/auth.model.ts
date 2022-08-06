@@ -10,7 +10,7 @@ export interface LoginResult {
 }
 
 export interface LoggedInUser {
-    role: Role;
+    roleId: Role;
     exp: Date;
 }
 

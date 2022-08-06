@@ -2,7 +2,7 @@
     <div class="server-header">
         <h2>Servers</h2>
         <span class="spacer"></span>
-        <button mat-icon-button [disabled]="!(authService.Role.Admin === authService.loggedInUser?.role)"><mat-icon>add</mat-icon></button>
+        <button mat-icon-button (click)="onAddServerClicked()" [disabled]="authService.Role.Admin !== authService.loggedInUser?.roleId"><mat-icon>add</mat-icon></button>
     </div>
     <div class="server-container">
         <mat-card *ngFor="let server of servers" class="server">
