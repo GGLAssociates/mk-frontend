@@ -1,0 +1,9 @@
+<mat-drawer-container style="height: 100vh; overflow-y: scroll;">
+  <mat-drawer #drawer [opened]="toolbarService.sidebarSubject$ | async" (closedStart)="toolbarService.sidebarSubject.next(false)" style="padding: 40px;">
+    <app-sidenav></app-sidenav>
+  </mat-drawer>
+  <mat-drawer-content>
+    <app-toolbar></app-toolbar>
+    <router-outlet></router-outlet>
+  </mat-drawer-content>
+</mat-drawer-container>
