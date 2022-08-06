@@ -1,1 +1,16 @@
-<p>servers-summary works!</p>
+<div class="router-output">
+    <div class="server-header">
+        <h2>Servers</h2>
+        <span class="spacer"></span>
+        <button mat-icon-button [disabled]="!(authService.Role.Admin === authService.loggedInUser?.role)"><mat-icon>add</mat-icon></button>
+    </div>
+    <div class="server-container">
+        <mat-card *ngFor="let server of servers" class="server">
+            <h5>{{server.name}}</h5>
+            IP: {{server.ipAddress}}
+            <button mat-raised-button color="primary">Start</button>
+            <button mat-raised-button color="warn">Close</button>
+        </mat-card>
+    
+    </div>
+</div>

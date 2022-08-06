@@ -1,6 +1,9 @@
-<mat-toolbar color="primary">
-    <button mat-icon-button (click)="onSidenavOpenClicked()">
-      <mat-icon>menu</mat-icon>
-    </button>
-    <span style="margin-left: 10px">MK Wizard</span>
-  </mat-toolbar>
+<mat-toolbar color="primary" style="display: flex;">
+  <button mat-icon-button (click)="onSidenavOpenClicked()">
+    <mat-icon>menu</mat-icon>
+  </button>
+  <span style="margin-left: 10px">MK Wizard</span>
+  <span class="spacer"></span>
+  <button mat-raised-button color="accent" *ngIf="!authService.loggedInUser" (click)="openLoginDialog()">Login</button>
+  <button mat-raised-button color="warn" *ngIf="authService.loggedInUser" (click)="onLogoutClicked()">Logout</button>
+</mat-toolbar>

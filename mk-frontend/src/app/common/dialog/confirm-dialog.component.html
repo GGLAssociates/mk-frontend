@@ -1,0 +1,9 @@
+<div class="confirm-dialog">
+    <span>{{heading}}</span>
+    {{message}}
+    <div class="button-row">
+        <span class="spacer"></span>
+        <button mat-stroked-button (click)="onOptionClicked(false)">No</button>
+        <button mat-stroked-button (click)="onOptionClicked(true)">Yes</button>
+    </div>
+</div>

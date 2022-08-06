@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { NavigationEnd, Router } from '@angular/router';
+import { AuthService } from './auth/auth.service';
 import { ToolbarService } from './toolbar/toolbar.service';
 
 @Component({
@@ -8,7 +10,13 @@ import { ToolbarService } from './toolbar/toolbar.service';
 })
 export class AppComponent implements OnInit {
   
-  constructor(public toolbarService: ToolbarService){}
+  constructor(public toolbarService: ToolbarService, router: Router, authService: AuthService){
+    router.events.subscribe(res => {
+      if(res instanceof NavigationEnd){
+        authService.getToken();
+      }
+    });
+  }
 
   ngOnInit(): void {
     
