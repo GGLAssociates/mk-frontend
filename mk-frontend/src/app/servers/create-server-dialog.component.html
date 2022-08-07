@@ -1,8 +1,12 @@
 <div class="create-server-container">
-    <mat-form-field>
-        <mat-label>Server Name</mat-label>
-        <input matInput [(ngModel)]="newServer.name" required>
-    </mat-form-field>
+    <div class="inline-item">
+        <p>Server Name</p>
+        <mat-form-field color="accent">
+            <mat-label>Server Name</mat-label>
+            <input matInput [(ngModel)]="newServer.worldName" required>
+        </mat-form-field>
+    </div>
+    <span class="validation">{{validationMessage}}</span>
     <div class="button-row">
         <span class="spacer"></span>
         <button mat-raised-button (click)="onCancelClicked()">Cancel</button>

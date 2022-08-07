@@ -21,7 +21,11 @@ import { ConfirmDialogComponent } from './common/dialog/confirm-dialog.component
 import { MatCardModule } from '@angular/material/card'
 import { AuthInterceptor } from './common/middleware/auth-interceptor';
 import { CreateServerDialogComponent } from './servers/create-server-dialog.component';
-import { MatInputModule } from '@angular/material/input'
+import { MatInputModule } from '@angular/material/input';
+import { MessageDialogComponent } from './common/dialog/message-dialog.component';
+import { AddUserDialogComponent } from './users/add-user-dialog.component'
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner'
+import { CanActivateRoute } from './auth/can-activate';
 
 @NgModule({
   declarations: [
@@ -32,7 +36,9 @@ import { MatInputModule } from '@angular/material/input'
     UsersSummaryComponent,
     LoginComponent,
     ConfirmDialogComponent,
-    CreateServerDialogComponent
+    CreateServerDialogComponent,
+    MessageDialogComponent,
+    AddUserDialogComponent
   ],
   imports: [
     BrowserModule,
@@ -48,10 +54,12 @@ import { MatInputModule } from '@angular/material/input'
     MatDialogModule,
     HttpClientModule,
     MatCardModule,
-    MatInputModule
+    MatInputModule,
+    MatProgressSpinnerModule
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },
+    CanActivateRoute,
   ],
   bootstrap: [AppComponent]
 })

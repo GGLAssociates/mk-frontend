@@ -1,0 +1,33 @@
+<div>
+    <h2>New User</h2>
+    <div class="new-user-fields">
+        <div><p>Name</p> 
+            <mat-form-field color="accent">
+                <mat-label>Name</mat-label>
+                <input matInput [(ngModel)]="user.username"  required>
+            </mat-form-field>
+        </div>
+        <div><p>Password</p> 
+            <mat-form-field color="accent">
+                <mat-label>Password</mat-label>
+                <input matInput [(ngModel)]="user.password" type="password" required>
+            </mat-form-field>
+        </div>
+        <div>
+            <p>Role</p>
+            <mat-form-field color="accent">
+                <mat-select [(ngModel)]="user.roleId" required disableOptionCentering="true">
+                    <mat-option *ngFor="let role of roles" [value]="role.id">
+                        {{role.name}}
+                    </mat-option>
+                </mat-select>
+            </mat-form-field>
+        </div>
+    </div>
+    <span class="validation">{{validationMessage}}</span>
+    <div class="util-button-row">
+        <span class="spacer"></span>
+        <button mat-raised-button (click)="onCancelClicked()">Cancel</button>
+        <button mat-raised-button (click)="onAddClicked()">Add</button>
+    </div>
+</div>

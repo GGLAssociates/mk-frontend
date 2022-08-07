@@ -8,8 +8,27 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 
 .router-output {
     margin: 50px;
+    width: 80vw;
 }
 
 .clickable {
     cursor: pointer;
+}
+
+.flex {
+    display: flex;
+}
+
+.util-button-row{
+    @extend .flex;
+    gap: 5px;
+}
+
+.flex-col {
+    display: flex;
+    flex-direction: column;
+}
+
+.validation {
+    color: red;
 }

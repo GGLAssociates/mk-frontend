@@ -1,1 +1,33 @@
-<p>users-summary works!</p>
+<div class="router-output">
+    <div class="user-header">
+        <h2>Users</h2>
+        <button mat-icon-button (click)="loadData()"><mat-icon>refresh</mat-icon></button>
+        <span class="spacer"></span>
+        <button mat-icon-button (click)="onAddUserClicked()" [disabled]="authService.Role.Admin !== authService.loggedInUser?.roleId" title="Add User"><mat-icon>add</mat-icon></button>
+    </div>
+    
+    <div class="loading-container" *ngIf="loadingUsers">
+        <mat-spinner color="accent"></mat-spinner>
+    </div>
+
+    <div class="users-container" *ngIf="!loadingUsers">
+        <mat-card *ngFor="let user of users">
+            <div class="username">
+                <p>{{user.username}}</p> 
+                <button mat-icon-button *ngIf="user.editMode" (click)="onSaveUserClicked(user)"><mat-icon>save</mat-icon></button>
+                <button mat-icon-button *ngIf="!user.editMode" (click)="onEditUserClicked(user)"><mat-icon>edit</mat-icon></button>
+                <button mat-icon-button *ngIf="user.editMode" (click)="onCancelEditUserClicked(user)"><mat-icon>close</mat-icon></button>
+                <span class="spacer"></span>
+                <button mat-icon-button (click)="onDeleteUserClicked(user)"><mat-icon>delete</mat-icon></button>
+            </div>
+            <div class="inline-item">
+                <p class="inline-item-label">Role: </p>
+                <mat-select [(ngModel)]="user.roleId" [disableOptionCentering]="true" class="inline-item-option" [disabled]="!user.editMode">
+                    <mat-option *ngFor="let role of roles" [value]="role.id">
+                        {{role.name}}
+                    </mat-option>
+                </mat-select>
+            </div>
+        </mat-card>
+    </div>
+</div>

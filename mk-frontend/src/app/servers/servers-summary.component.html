@@ -1,16 +1,29 @@
 <div class="router-output">
     <div class="server-header">
         <h2>Servers</h2>
+        <button mat-icon-button (click)="refreshServers()"><mat-icon>refresh</mat-icon></button>
         <span class="spacer"></span>
-        <button mat-icon-button (click)="onAddServerClicked()" [disabled]="authService.Role.Admin !== authService.loggedInUser?.roleId"><mat-icon>add</mat-icon></button>
+        <button mat-icon-button (click)="onAddServerClicked()" [disabled]="authService.Role.Admin !== authService.loggedInUser?.roleId" title="Add Server"><mat-icon>add</mat-icon></button>
     </div>
-    <div class="server-container">
-        <mat-card *ngFor="let server of servers" class="server">
-            <h5>{{server.name}}</h5>
-            IP: {{server.ipAddress}}
-            <button mat-raised-button color="primary">Start</button>
-            <button mat-raised-button color="warn">Close</button>
+    <div class="loading-container" *ngIf="loadingServers">
+        <mat-spinner color="accent"></mat-spinner>
+    </div>
+    <div class="server-container" *ngIf="!loadingServers">
+        <mat-card *ngFor="let server of servers" class="server" [ngStyle]="{'background-color': ServerStatusColour.get(server.serverStatus ?? 1)}">
+            <h5>{{server.worldName}}</h5>
+            <div class="flex">
+                <div class="server-details">
+                    <div><p>IP:</p> {{server.ipAddress}}</div>
+                    <div><p>Status:</p> {{ServerStatusLabel.get(server.serverStatus ?? 1)}}</div>
+                </div>
+                <span class="spacer"></span>
+                <div class="util-button-row flex-col">
+                    <button mat-raised-button (click)="startWorld(server)" [disabled]="authService.Role.Admin !== authService.loggedInUser?.roleId">Start</button>
+                    <button mat-raised-button (click)="closeServer(server)" [disabled]="authService.Role.Admin !== authService.loggedInUser?.roleId">Close</button>
+                    <button mat-raised-button (click)="deleteWorld(server)" color="warn" [disabled]="authService.Role.Admin !== authService.loggedInUser?.roleId">Delete</button>
+                </div>
+            </div>
+            
         </mat-card>
-    
     </div>
 </div>

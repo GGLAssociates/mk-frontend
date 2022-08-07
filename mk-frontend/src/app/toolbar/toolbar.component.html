@@ -4,6 +4,7 @@
   </button>
   <span style="margin-left: 10px">MK Wizard</span>
   <span class="spacer"></span>
+  <span *ngIf="authService.loggedInUser" class="username">{{authService.loggedInUser.username}}</span>
   <button mat-raised-button color="accent" *ngIf="!authService.loggedInUser" (click)="openLoginDialog()">Login</button>
   <button mat-raised-button color="warn" *ngIf="authService.loggedInUser" (click)="onLogoutClicked()">Logout</button>
 </mat-toolbar>

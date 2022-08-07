@@ -2,10 +2,32 @@
 .server-container {
     display: flex;
     flex-direction: column;
+    gap: 1em;
 }
 
 .server-header {
     display: flex;
-    width: 80%;
+    width: 100%;
+    align-items: center;
+}
+
+.loading-container {
+    width: 100%;
+    .mat-spinner{
+        margin: auto;
+    }
+}
+
+.server-details {
+    display: flex;
+    flex-direction: column;
+    div {
+        align-items: center;
+        display: flex;
+        p {
+            width: 100px;
+        }
+    }
+    
 }
 

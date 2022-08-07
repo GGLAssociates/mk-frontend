@@ -1,0 +1,13 @@
+
+.new-user-fields {
+    display: flex;
+    flex-direction: column;
+    div {
+        display: flex;
+        gap: 1em;
+        align-items: center;
+        p {
+          width: 40%;  
+        }
+    }
+}

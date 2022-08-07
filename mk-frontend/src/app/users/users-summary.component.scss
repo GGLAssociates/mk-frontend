@@ -1,0 +1,40 @@
+
+.user-header {
+    display: flex;
+    align-items: center;
+    width: 100%;
+}
+
+.users-container {
+    display: flex;
+    flex-direction: column;
+    gap: 1em;
+    width: 100%;
+}
+
+.loading-container {
+    width: 100%;
+    .mat-spinner {
+        margin: auto;
+    }
+}
+
+.inline-item {
+    margin: 10px;
+    display: flex;
+    align-items: center;
+    .inline-item-label {
+        width: 10%;
+    }
+    .inline-item-option {
+        width: 30%;
+    }
+}
+
+.username {
+    display: flex;
+    align-items: center;
+    p {
+        margin-right: 10px;
+    }
+}

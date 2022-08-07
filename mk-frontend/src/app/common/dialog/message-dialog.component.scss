@@ -3,10 +3,9 @@
     gap: 5px;
 }
 
-.inline-item {
+.message-dialog {
     display: flex;
+    flex-direction: column;
+    min-width: 350px;
     gap: 1em;
-    p {
-        width: 40%;
-    }
 }

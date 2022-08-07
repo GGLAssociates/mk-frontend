@@ -5,7 +5,7 @@ import { Role } from "./auth.model";
 import { AuthService } from "./auth.service";
 
 @Injectable()
-class CanActivateTeam implements CanActivate {
+export class CanActivateRoute implements CanActivate {
   constructor(private authService: AuthService) {}
 
   canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<boolean|UrlTree>|Promise<boolean|UrlTree>|boolean|UrlTree {

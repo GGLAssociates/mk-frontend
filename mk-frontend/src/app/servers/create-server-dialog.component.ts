@@ -10,8 +10,8 @@ import { ServerService } from './server.service';
 })
 export class CreateServerDialogComponent implements OnInit {
 
-  newServer: NewServer = {name: ''};
-
+  newServer: NewServer = {worldName: ''};
+  validationMessage: string = '';
   constructor(private dialogRef: MatDialogRef<CreateServerDialogComponent>, private serverService: ServerService) { }
 
 
@@ -25,17 +25,18 @@ export class CreateServerDialogComponent implements OnInit {
 
   onAddClicked(){
     if(this.validateCreateServer()){
-      this.serverService.createServer(this.newServer.name).subscribe(res => {
-        console.log(res)
-        if(res){
-          this.dialogRef.close(true);
+      this.serverService.createServer(this.newServer.worldName).subscribe(res => {
+        if(res && !res.message){
+          this.dialogRef.close(res);
+        }else{
+          this.validationMessage = res?.message;
         }
       });
     }
   }
 
   validateCreateServer(){
-    const isOk = !!this.newServer.name;
+    const isOk = !!this.newServer.worldName;
 
     return isOk;
   }
