@@ -27,6 +27,7 @@ export class ServersSummaryComponent implements OnInit {
   }
 
   loadData(): void {
+    this.dialogService.showWarningMessage('test')
     this.loadingServers = true;
     this.serversService.getServers().subscribe(res => {
       this.servers = res;

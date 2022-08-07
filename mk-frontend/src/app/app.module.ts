@@ -26,6 +26,8 @@ import { MessageDialogComponent } from './common/dialog/message-dialog.component
 import { AddUserDialogComponent } from './users/add-user-dialog.component'
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner'
 import { CanActivateRoute } from './auth/can-activate';
+import { SnackbarComponent } from './common/dialog/snackbar.component';
+import { MatSnackBarModule} from '@angular/material/snack-bar'
 
 @NgModule({
   declarations: [
@@ -38,7 +40,8 @@ import { CanActivateRoute } from './auth/can-activate';
     ConfirmDialogComponent,
     CreateServerDialogComponent,
     MessageDialogComponent,
-    AddUserDialogComponent
+    AddUserDialogComponent,
+    SnackbarComponent
   ],
   imports: [
     BrowserModule,
@@ -55,7 +58,8 @@ import { CanActivateRoute } from './auth/can-activate';
     HttpClientModule,
     MatCardModule,
     MatInputModule,
-    MatProgressSpinnerModule
+    MatProgressSpinnerModule,
+    MatSnackBarModule
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },
